@@ -43,23 +43,17 @@ const Signup = () => {
       });
       return;
     }
-    console.log(name, email, password, pic);
     try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-      const { data } = await axios.post(
-        "/api/user",
-        {
+      const { data } = await axios({
+        method: "post",
+        url: "/api/user",
+        data: {
           name,
           email,
           password,
           pic,
         },
-        config
-      );
+      });
       console.log(data);
       toast({
         title: "Registration Successful",
@@ -132,7 +126,7 @@ const Signup = () => {
 
   return (
     <VStack spacing="5px">
-      <FormControl id="first-name" isRequired>
+      <FormControl name id="first-name" isRequired>
         <FormLabel>Name</FormLabel>
         <Input
           placeholder="Enter Your Name"

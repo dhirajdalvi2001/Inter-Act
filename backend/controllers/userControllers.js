@@ -4,7 +4,9 @@ const generateToken = require("../config/generateToken");
 
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, pic } = req.body;
-
+  console.log(req.body);
+  console.log(name);
+  console.log(password);
   if (!name || !email || !password) {
     res.status(400);
     throw new Error("Please Enter all the Feilds");
@@ -44,9 +46,10 @@ const registerUser = asyncHandler(async (req, res) => {
 //@access          Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
+  console.log(req.body);
 
   const user = await User.findOne({ email });
-
+  console.log(user);
   if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,

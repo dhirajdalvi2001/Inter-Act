@@ -31,19 +31,15 @@ const Login = () => {
       return;
     }
 
-    // console.log(email, password);
     try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
+      const { data } = await axios({
+        method: "post",
+        url: "/api/user/login",
+        data: {
+          email,
+          password,
         },
-      };
-
-      const { data } = await axios.post(
-        "/api/user/login",
-        { email, password },
-        config
-      );
+      });
 
       // console.log(JSON.stringify(data));
       toast({
