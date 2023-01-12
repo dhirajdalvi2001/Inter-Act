@@ -1,0 +1,31 @@
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap");
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}
+
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $dark;
+  font-family: "Work Sans", sans-serif;
+}
+
+.App {
+  min-height: 100vh;
+  @include flexCenter(row);
+  align-items: flex-start;
+  background-image: url("../images/bg-wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: $dark;
+}
